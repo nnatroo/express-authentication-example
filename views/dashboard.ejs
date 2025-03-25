@@ -1,0 +1,12 @@
+<h1>Dashboard</h1>
+<p>Welcome to your dashboard, <%= user.email %>!</p>
+<p>This is a protected page that only logged-in users can see.</p>
+
+<!-- Add this logout form -->
+<form action="/logout" method="GET">
+    <button type="submit" style="padding: 8px 15px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer;">
+        Logout
+    </button>
+</form>
+
+<p>You can also <a href="/">return to home</a>.</p>

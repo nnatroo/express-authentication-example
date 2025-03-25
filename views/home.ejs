@@ -1,0 +1,6 @@
+<h1>Welcome to our website</h1>
+<% if (user) { %>
+    <p>You are logged in as <%= user.email %>. Visit your <a href="/dashboard">dashboard</a>.</p>
+<% } else { %>
+    <p>Please <a href="/login">login</a> or <a href="/register">register</a> to continue.</p>
+<% } %>
