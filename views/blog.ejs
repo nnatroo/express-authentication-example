@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= blog.title %></title>
+    <link rel="stylesheet" href="/blog.css">
+</head>
+<body>
+<div class="blog-container">
+    <h2 class="blog-title"><%= blog.title %></h2>
+    <p class="blog-meta">By <strong><%= blog.author %></strong> on <%= blog.date %></p>
+    <p class="blog-content"><%= blog.content %></p>
+    <a href="/blogs" class="back-link">← Back to Blogs</a>
+</div>
+</body>
+</html>

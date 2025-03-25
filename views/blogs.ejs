@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Blogs</title>
+    <link rel="stylesheet" href="./blogs.css">
+</head>
+<body>
+<div class="container">
+    <h2>All Blogs</h2>
+
+    <% if (user) { %>
+        <a href="/blogs/new" class="btn">Create New Blog</a>
+    <% } %>
+
+    <ul class="blog-list">
+        <% blogs.forEach(blog => { %>
+            <li class="blog-item">
+                <h3><a href="/blogs/<%= blog.id %>" class="blog-title"><%= blog.title %></a></h3>
+                <p class="blog-meta">By <%= blog.author %> on <%= blog.date %></p>
+            </li>
+        <% }) %>
+    </ul>
+
+    <p><a href="/" class="home-link">Return to Home</a></p>
+</div>
+</body>
+</html>

@@ -125,7 +125,65 @@ app.get('/logout', (req, res) => {
     });
 });
 
-// Start the server
+const BLOGS_FILE = 'blogs.json';
+
+if (!fs.existsSync(BLOGS_FILE)) {
+    fs.writeFileSync(BLOGS_FILE, '[]');
+}
+
+function getBlogs() {
+    return JSON.parse(fs.readFileSync(BLOGS_FILE));
+}
+
+function saveBlogs(blogs) {
+    fs.writeFileSync(BLOGS_FILE, JSON.stringify(blogs, null, 2));
+}
+
+
+// Show all blogs
+app.get('/blogs', (req, res) => {
+    const blogs = getBlogs();
+    res.render('blogs', { user: req.session.user, blogs });
+});
+
+// Show form to create a blog (only for logged-in users)
+app.get('/blogs/new', requireAuth, (req, res) => {
+    res.render('new_blog', { user: req.session.user, error: null });
+});
+
+// Show a single blog
+app.get('/blogs/:id', (req, res) => {
+    const blogs = getBlogs();
+    const blog = blogs.find(b => b.id === req.params.id);
+    if (!blog) {
+        return res.status(404).send('Blog not found');
+    }
+    res.render('blog', { user: req.session.user, blog });
+});
+
+
+// Handle new blog submission
+app.post('/blogs', requireAuth, (req, res) => {
+    const { title, content } = req.body;
+    if (!title || !content) {
+        return res.render('new_blog', { user: req.session.user, error: 'Title and content required' });
+    }
+
+    const blogs = getBlogs();
+    const newBlog = {
+        id: String(Date.now()), // Simple ID generation
+        title,
+        content,
+        author: req.session.user.email,
+        date: new Date().toLocaleString(),
+    };
+
+    blogs.push(newBlog);
+    saveBlogs(blogs);
+
+    res.redirect('/blogs');
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });

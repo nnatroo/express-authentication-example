@@ -1,6 +1,25 @@
-<h1>Welcome to our website</h1>
-<% if (user) { %>
-    <p>You are logged in as <%= user.email %>. Visit your <a href="/dashboard">dashboard</a>.</p>
-<% } else { %>
-    <p>Please <a href="/login">login</a> or <a href="/register">register</a> to continue.</p>
-<% } %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/home.css">
+</head>
+<body>
+<div class="home-container">
+    <h1>Welcome to our website</h1>
+
+    <% if (user) { %>
+        <p class="user-message">You are logged in as <strong><%= user.email %></strong>. Visit your <a href="/dashboard"
+                                                                                                       class="dashboard-link">dashboard</a>.
+        </p>
+    <% } else { %>
+        <p class="guest-message">
+            Please <a href="/login" class="auth-link">login</a> or
+            <a href="/register" class="auth-link">register</a> to continue.
+        </p>
+    <% } %>
+</div>
+</body>
+</html>

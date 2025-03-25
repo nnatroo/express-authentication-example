@@ -1,12 +1,31 @@
-<h1>Dashboard</h1>
-<p>Welcome to your dashboard, <%= user.email %>!</p>
-<p>This is a protected page that only logged-in users can see.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/dashboard.css">
+</head>
+<body>
+<div class="container">
+    <h1>Dashboard</h1>
+    <p>Welcome to your dashboard, <%= user.email %>!</p>
+    <p class="protected-message">This is a protected page that only logged-in users can see.</p>
 
-<!-- Add this logout form -->
-<form action="/logout" method="GET">
-    <button type="submit" style="padding: 8px 15px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer;">
-        Logout
-    </button>
-</form>
+    <div class="blog-section">
+        <h2>Blog Section</h2>
+        <p>You can view or create blogs here:</p>
+        <ul class="blog-links">
+            <li><a href="/blogs">📖 View All Blogs</a></li>
+            <li><a href="/blogs/new">✍️ Create a New Blog</a></li>
+        </ul>
+    </div>
 
-<p>You can also <a href="/">return to home</a>.</p>
+    <form action="/logout" method="GET" class="logout-form">
+        <button type="submit" class="btn logout-btn">Logout</button>
+    </form>
+
+    <p><a href="/" class="home-link">🏠 Return to Home</a></p>
+</div>
+</body>
+</html>

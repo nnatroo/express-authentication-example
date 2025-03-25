@@ -1,0 +1,34 @@
+.home-container {
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.user-message, .guest-message {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #555;
+}
+
+.dashboard-link, .auth-link {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.dashboard-link:hover, .auth-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+* {
+    font-family: system-ui;
+}
